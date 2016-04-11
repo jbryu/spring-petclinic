@@ -32,11 +32,11 @@ var MockService = ['$httpBackend', '$http', '$q', 'context', function($httpBacke
 			if(useMockData) {
 				$q.defer();
 				$q.all([
-				        $http.get(context + '/static/mock-data/pets.json'),
-				        $http.get(context + '/static/mock-data/vets.json'),
-				        $http.get(context + '/static/mock-data/owners.json'),
-				        $http.get(context + '/static/mock-data/owner_one.json'),
-				        $http.get(context + '/static/mock-data/pettypes.json'),
+				        $http.get(context.replace('#/', '') + '/static/mock-data/pets.json'),
+				        $http.get(context.replace('#/', '') + '/static/mock-data/vets.json'),
+				        $http.get(context.replace('#/', '') + '/static/mock-data/owners.json'),
+				        $http.get(context.replace('#/', '') + '/static/mock-data/owner_one.json'),
+				        $http.get(context.replace('#/', '') + '/static/mock-data/pettypes.json'),
 				]).then(function(data) {
 					console.log("Mocking /api/pets");
 					$httpBackend.whenGET(context + '/api/pets').respond(data[0].data);
